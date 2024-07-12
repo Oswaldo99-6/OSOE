@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PEPE</title>
+    <link rel="stylesheet" href="bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<style>
+  #productos{
+    width:"300px"
+  }
+</style>
+<body class="text-center" onload="cargarProductos();">
+    
+    <nav  class="navbar bg-primary" >
+        <div class="container-fluid text-center">
+            <a class="navbar-brand" href="#">
+                <img src="logo2.jpg" alt="Bootstrap" width="30" height="24">
+            </a>
+            <h1 class="navbar-brand m-auto text-light">POLLERIA EL DON PEPE </h1>
+        </div>
+    </nav>
+
+    <div class="container-fluid w-75 m-auto">
+
+        <div class="card text-center mt-4">
+            <div class="card-header">
+                <img src="pepes.jpg" alt="" height="40px">  
+            </div>
+            <div class="card-body">
+                <table class="table w-75 m-auto">
+                    <tr>
+                        <td>
+                        <button onclick="verProductos()" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#gestionProductos"><i class="bi bi-gear-fill"></i>config</button></td>
+                    </td>    
+                        <td>Producto</td>
+                        <td>Imagen</td>
+                        <td>Complementos</td>
+                        <td>Precio</td> 
+                        <td>Cantidad</td>
+                        <td>Agregar</td>
+                    </tr>
+                  <tr>
+                    <td></td>
+                    <td class="align-middle">
+                        <select name="producto" id="productos" class="form-control"></select>
+                    </td>
+                    <td class="align-middle">
+                        <img src="icono.jpg" alt="" id="imgProducto" height="80px">
+                    </td>
+
+                    
+                      <td>
+                        <input type="checkbox" name="Arroz" id="ar">Arroz
+                        <input type="checkbox" name="Salsa" id="sal">Salsa
+                        <input type="checkbox" name="Refresco" id="ref">Refresco
+                      </td>
+                   
+
+                    <td><h1 id="precioProducto">$0</h1></td>
+                    <td class="align-middle">
+                        <h1 id="vcantidad">1</h1>
+                        <input type="range" min="1" max="10" value="1" class="form-control" id="inputCantidad">
+                    </td>
+                    <td class="align-middle">
+                        <button type="button" class="btn btn-primary" id="agregarCarrito">Agregar</button>
+                    </td>
+                </tr>
+                </table>
+                <div id="carrito"></div>
+            </div>
+            <div class="card-footer text-body-secondary">
+                Oswaldo del Toro Sanchez
+            </div>
+        </div>
+    
+    </div>
+
+    <div class="modal fade" id="gestionProductos" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog  modal-dialog-centered modal-x1">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5 w-100 text-center" id="exampleModalLabel">GESTIÓN DE PRODUCTOS</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+
+              <table class="table w-100 m-auto">
+                <tr>
+                  <td>
+                    <label for="producto" class="form-label">NOMBRE PRODUCTO</label>
+                    <input type="text" class="form-control" id="nombre">
+                  </td>
+                  <td>
+                    <label for="precio" class="form-label">PRECIO</label>
+                    <input type="number" class="form-control" id="precioP">
+                  </td>
+                  <td>
+                    <button class="btn btn-success" onclick="addProductos()"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-bag-plus-fill mx-4" viewBox="0 0 16 16">
+                      <path fill-rule="evenodd" d="M10.5 3.5a2.5 2.5 0 0 0-5 0V4h5zm1 0V4H15v10a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V4h3.5v-.5a3.5 3.5 0 1 1 7 0M8.5 8a.5.5 0 0 0-1 0v1.5H6a.5.5 0 0 0 0 1h1.5V12a.5.5 0 0 0 1 0v-1.5H10a.5.5 0 0 0 0-1H8.5z"/>
+                    </svg></button>
+                  </td>
+                </tr>
+              </table>
+
+              <h2>LISTA PRODUCTOS</h2>
+             <div id="listaProductos">
+
+             </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
+              <button type="button" class="btn btn-success">Guardar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+
+      <div class="modal fade" id="addProductos" tabindex="1">
+        <div class="modal-dialog z-3 modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5 w-100 text-center" id="exampleModalLabel">AGREGAR</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+
+             </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
+              <button type="button" class="btn btn-success">Guardar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <script src="bootstrap.bundle.min.js"></script>
+    <script src="sweetalert2.all.min.js "></script>
+    <script src="app.js"></script>
+</body>
+</html>
+
